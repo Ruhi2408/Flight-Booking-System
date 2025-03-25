@@ -1,0 +1,10 @@
+package com.app.FlightSystem.Service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class FlightService {
+	
+	
+
+}

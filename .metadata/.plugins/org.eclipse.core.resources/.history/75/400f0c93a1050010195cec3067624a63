@@ -1,0 +1,5 @@
+package com.app.FlightSystem.Controller;
+
+public class FlightController {
+
+}

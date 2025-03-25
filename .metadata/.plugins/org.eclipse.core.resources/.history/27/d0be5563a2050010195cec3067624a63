@@ -1,0 +1,5 @@
+package com.app.FlightSystem.repository;
+
+public class FlightRepository {
+
+}

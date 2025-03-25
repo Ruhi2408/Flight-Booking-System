@@ -1,0 +1,14 @@
+package com.app.FlightSystem.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.FlightSystem.repository.FlightRepository;
+
+@Service
+public class FlightService {
+	@Autowired
+	FlightRepository flightRepository;
+	
+
+}

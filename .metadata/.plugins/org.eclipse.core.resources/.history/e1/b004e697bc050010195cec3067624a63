@@ -1,0 +1,27 @@
+package com.app.FlightSystem.Service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.FlightSystem.model.Flight;
+import com.app.FlightSystem.repository.FlightRepository;
+
+@Service
+public class FlightService {
+	@Autowired
+	FlightRepository flightRepository;
+	
+	public List<Flight> searchFlights(String source, String destination,String departureDate){
+		return flightRepository.findBySourceAndDestinationAndDepartureDate(source, destination, departureDate);
+	}
+	public Flight getFlightbyId(Long Id) {
+		return flightRepository.findById(Id);
+	}
+	
+	public Flight addFlight(Flight flight) {
+		return flightRepository.save(flight);
+	}
+
+}
