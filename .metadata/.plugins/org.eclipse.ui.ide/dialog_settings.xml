@@ -10,6 +10,11 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="G:\FlightBookingSystem\UserService"/>
+			<item value="G:\FlightBookingSystem\ApiGateway"/>
+			<item value="G:\FlightBookingSystem\servicereg"/>
+			<item value="G:\FlightBookingSystem\FlightSystem"/>
+			<item value="G:\FlightBookingSystem\BookingService"/>
 			<item value="G:\servicereg"/>
 			<item value="G:\FlightSystem"/>
 		</list>

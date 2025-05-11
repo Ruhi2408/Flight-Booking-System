@@ -11,8 +11,8 @@ import com.app.FlightSystem.model.Flight;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Long> {
 
-    List<Flight> findBySourceLocationAndDestinationAndDepartureDate(
-        String sourceLocation, String destination, LocalDate departureDate);
+    List<Flight> findBySourceAndDestinationAndDepartureDate(
+        String source, String destination, LocalDate departureDate);
 
-    Flight findByIdAndDepartureDate(Long id, LocalDate departureDate);
+    Flight findByFlightIdAndDepartureDate(Long flightId, LocalDate departureDate);
 }

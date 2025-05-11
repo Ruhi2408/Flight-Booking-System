@@ -22,12 +22,12 @@ public class FlightService {
         this.flightRepository = flightRepository;
     }
 
-    public List<Flight> searchFlights(String sourceLocation, String destination, LocalDate departureDate) {
-        return flightRepository.findBySourceLocationAndDestinationAndDepartureDate(sourceLocation, destination, departureDate);
+    public List<Flight> searchFlights(String source, String destination, LocalDate departureDate) {
+        return flightRepository.findBySourceAndDestinationAndDepartureDate(source, destination, departureDate);
     }
 
-    public Flight getFlightById(Long id, LocalDate departureDate) {
-        return flightRepository.findByIdAndDepartureDate(id, departureDate);
+    public Flight getFlightById(Long flightId, LocalDate departureDate) {
+        return flightRepository.findByFlightIdAndDepartureDate(flightId, departureDate);
     }
 
     public Flight addFlight(Flight flight) {
@@ -38,13 +38,13 @@ public class FlightService {
         return flightRepository.findAll();
     }
 
-    public Flight updateFlight(Long id, Flight updatedFlight) {
-        Optional<Flight> existingFlightOpt = flightRepository.findById(id);
+    public Flight updateFlight(Long flightId, Flight updatedFlight) {
+        Optional<Flight> existingFlightOpt = flightRepository.findById(flightId);
 
         if (existingFlightOpt.isPresent()) {
             Flight existingFlight = existingFlightOpt.get();
             existingFlight.setAirlines(updatedFlight.getAirlines());
-            existingFlight.setSourceLocation(updatedFlight.getSourceLocation());
+            existingFlight.setSource(updatedFlight.getSource());
             existingFlight.setDestination(updatedFlight.getDestination());
             existingFlight.setDepartureDate(updatedFlight.getDepartureDate());
             existingFlight.setDepartureTime(updatedFlight.getDepartureTime());
@@ -57,8 +57,8 @@ public class FlightService {
         return null;
     }
 
-    public Flight updateFlightFields(Long id, Map<String, Object> updates) {
-        Optional<Flight> existingFlightOpt = flightRepository.findById(id);
+    public Flight updateFlightFields(Long flightId, Map<String, Object> updates) {
+        Optional<Flight> existingFlightOpt = flightRepository.findById(flightId);
 
         if (existingFlightOpt.isPresent()) {
             Flight existingFlight = existingFlightOpt.get();
@@ -66,8 +66,8 @@ public class FlightService {
             if (updates.containsKey("airlines")) {
                 existingFlight.setAirlines((String) updates.get("airlines"));
             }
-            if (updates.containsKey("sourceLocation")) {
-                existingFlight.setSourceLocation((String) updates.get("sourceLocation"));
+            if (updates.containsKey("source")) {
+                existingFlight.setSource((String) updates.get("source"));
             }
             if (updates.containsKey("destination")) {
                 existingFlight.setDestination((String) updates.get("destination"));
@@ -93,9 +93,9 @@ public class FlightService {
         return null;
     }
 
-    public boolean deleteFlight(Long id) {
-        if (flightRepository.existsById(id)) {
-            flightRepository.deleteById(id);
+    public boolean deleteFlight(Long flightId) {
+        if (flightRepository.existsById(flightId)) {
+            flightRepository.deleteById(flightId);
             return true;
         }
         return false;

@@ -14,15 +14,16 @@ import jakarta.persistence.Table;
 @Table(name = "flights")
 public class Flight {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "flight_id")
+    private Long flightId;
 
     @Column(name = "airlines", nullable = false)
     private String airlines;
 
     @Column(name = "source_location", nullable = false)
-    private String sourceLocation;
+    private String source;
 
     @Column(name = "destination", nullable = false)
     private String destination;
@@ -41,94 +42,93 @@ public class Flight {
 
     @Column(name = "total_seats", nullable = false)
     private int totalSeats;
-    
-    public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getFlightId() {
+        return flightId;
+    }
 
-	public String getAirlines() {
-		return airlines;
-	}
+    public void setFlightId(Long flightId) {
+        this.flightId = flightId;
+    }
 
-	public void setAirlines(String airlines) {
-		this.airlines = airlines;
-	}
+    public String getAirlines() {
+        return airlines;
+    }
 
-	public String getSourceLocation() {
-		return sourceLocation;
-	}
+    public void setAirlines(String airlines) {
+        this.airlines = airlines;
+    }
 
-	public void setSourceLocation(String sourceLocation) {
-		this.sourceLocation = sourceLocation;
-	}
+    public String getSource() {
+        return source;
+    }
 
-	public String getDestination() {
-		return destination;
-	}
+    public void setSource(String source) {
+        this.source = source;
+    }
 
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
+    public String getDestination() {
+        return destination;
+    }
 
-	public LocalDate getDepartureDate() {
-		return departureDate;
-	}
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
 
-	public void setDepartureDate(LocalDate departureDate) {
-		this.departureDate = departureDate;
-	}
+    public LocalDate getDepartureDate() {
+        return departureDate;
+    }
 
-	public LocalTime getDepartureTime() {
-		return departureTime;
-	}
+    public void setDepartureDate(LocalDate departureDate) {
+        this.departureDate = departureDate;
+    }
 
-	public void setDepartureTime(LocalTime departureTime) {
-		this.departureTime = departureTime;
-	}
+    public LocalTime getDepartureTime() {
+        return departureTime;
+    }
 
-	public LocalTime getArrivalTime() {
-		return arrivalTime;
-	}
+    public void setDepartureTime(LocalTime departureTime) {
+        this.departureTime = departureTime;
+    }
 
-	public void setArrivalTime(LocalTime arrivalTime) {
-		this.arrivalTime = arrivalTime;
-	}
+    public LocalTime getArrivalTime() {
+        return arrivalTime;
+    }
 
-	public double getPrice() {
-		return price;
-	}
+    public void setArrivalTime(LocalTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+    public double getPrice() {
+        return price;
+    }
 
-	public int getTotalSeats() {
-		return totalSeats;
-	}
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-	public void setTotalSeats(int totalSeats) {
-		this.totalSeats = totalSeats;
-	}
+    public int getTotalSeats() {
+        return totalSeats;
+    }
 
-	public Flight(Long id, String airlines, String sourceLocation, String destination, LocalDate departureDate,
-			LocalTime departureTime, LocalTime arrivalTime, double price, int totalSeats) {
-		super();
-		this.id = id;
-		this.airlines = airlines;
-		this.sourceLocation = sourceLocation;
-		this.destination = destination;
-		this.departureDate = departureDate;
-		this.departureTime = departureTime;
-		this.arrivalTime = arrivalTime;
-		this.price = price;
-		this.totalSeats = totalSeats;
-	}
-	
-	public Flight() {
-		
-	}
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
+    }
+
+    public Flight(Long flightId, String airlines, String source, String destination, LocalDate departureDate,
+                  LocalTime departureTime, LocalTime arrivalTime, double price, int totalSeats) {
+        super();
+        this.flightId = flightId;
+        this.airlines = airlines;
+        this.source = source;
+        this.destination = destination;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.price = price;
+        this.totalSeats = totalSeats;
+    }
+
+    public Flight() {
+    }
 }

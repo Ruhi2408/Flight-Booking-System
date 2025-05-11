@@ -26,22 +26,22 @@ public class FlightController {
         return flightService.getAllFlights();
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search/{source}/{destination}/{departureDate}")
     public ResponseEntity<List<Flight>> findFlightsBySourceAndDestination(
-            @RequestParam(required = false) String sourceLocation,
-            @RequestParam(required = false) String destination,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departureDate) {
+            @PathVariable String source,
+            @PathVariable String destination,
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departureDate) {
         
-        List<Flight> flights = flightService.searchFlights(sourceLocation, destination, departureDate);
+        List<Flight> flights = flightService.searchFlights(source, destination, departureDate);
         return flights.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(flights);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{flightId}/{departureDate}")
     public ResponseEntity<Flight> getFlightById(
-            @PathVariable Long id,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departureDate) {
+            @PathVariable Long flightId,
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departureDate) {
         
-        Flight flight = flightService.getFlightById(id, departureDate);
+        Flight flight = flightService.getFlightById(flightId, departureDate);
         return (flight != null) ? ResponseEntity.ok(flight) : ResponseEntity.notFound().build();
     }
 
@@ -50,24 +50,24 @@ public class FlightController {
         return flightService.addFlight(flight);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Flight> updateFlight(@PathVariable Long id, @RequestBody Flight updatedFlight) {
-        Flight flight = flightService.updateFlight(id, updatedFlight);
+    @PutMapping("/update/{flightId}")
+    public ResponseEntity<Flight> updateFlight(@PathVariable Long flightId, @RequestBody Flight updatedFlight) {
+        Flight flight = flightService.updateFlight(flightId, updatedFlight);
         return (flight != null) ? ResponseEntity.ok(flight) : ResponseEntity.notFound().build();
     }
 
-    @PatchMapping("/update/{id}")
+    @PatchMapping("/update/{flightId}")
     public ResponseEntity<Flight> updateFlightFields(
-            @PathVariable Long id,
+            @PathVariable Long flightId,
             @RequestBody Map<String, Object> updates) {
 
-        Flight updatedFlight = flightService.updateFlightFields(id, updates);
+        Flight updatedFlight = flightService.updateFlightFields(flightId, updates);
         return (updatedFlight != null) ? ResponseEntity.ok(updatedFlight) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteFlight(@PathVariable Long id) {
-        boolean isDeleted = flightService.deleteFlight(id);
+    @DeleteMapping("/delete/{flightId}")
+    public ResponseEntity<String> deleteFlight(@PathVariable Long flightId) {
+        boolean isDeleted = flightService.deleteFlight(flightId);
         return isDeleted ? ResponseEntity.ok("Flight deleted successfully.") : ResponseEntity.notFound().build();
     }
 }
