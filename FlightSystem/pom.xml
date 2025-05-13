@@ -108,6 +108,11 @@
 	        <artifactId>mockito-junit-jupiter</artifactId>
 	        <scope>test</scope>
         </dependency>
+        <dependency>
+        	<groupId>com.api</groupId>
+        	<artifactId>ApiGateway</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 
 	<build>

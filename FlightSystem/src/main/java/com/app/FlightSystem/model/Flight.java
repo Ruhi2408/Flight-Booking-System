@@ -1,6 +1,7 @@
 package com.app.FlightSystem.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import jakarta.persistence.Column;
@@ -131,4 +132,9 @@ public class Flight {
 
     public Flight() {
     }
+
+	public Flight(long flightId2, String airlines2, String source2, String destination2, LocalDate now,
+			LocalDateTime atTime, LocalDateTime atTime2, double price2, int totalSeats2) {
+		// TODO Auto-generated constructor stub
+	}
 }
