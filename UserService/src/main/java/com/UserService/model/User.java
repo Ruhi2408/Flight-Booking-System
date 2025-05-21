@@ -10,63 +10,55 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
 
-    @Column(name = "name", nullable = false)
-    private String passengerName;
-    
-    @Column(name="age",nullable= false)
-    private int age;
+    @Column(nullable = false)
+    private String userName;
 
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
-    
-    @Column(name="contact_no", nullable= false,unique=true)
-    private String contact_no;
 
-    @Column(name = "password", nullable = false)
+    @Column(nullable = false)
     private String password;
-    
-    
 
-    public User() {
+    @Column(nullable = false)
+    private String role; // ROLE_USER or ROLE_ADMIN
+
+	public Long getUser_id() {
+		return user_id;
 	}
-	public User(Long user_id, String passengerName,int age, String email, String password,String contact_no) {
-		super();
+
+	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
-		this.passengerName = passengerName;
-		this.age=age;
-		this.email = email;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
 		this.password = password;
-		this.contact_no = contact_no;
-	}// Getters and Setters
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
 	
-	public String getContact_no() {
-		return contact_no;
-	}
-	public void setContact_no(String contact_no) {
-		this.contact_no = contact_no;
-	}
-	public Long getId() { return user_id; }
+
+    // Getters and setters
     
-   
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public void setId(Long user_id) { this.user_id = user_id; }
-
-    public String getPassengerName() { return passengerName; }
-    public void setPassengerName(String passengerName) { this.passengerName = passengerName; }
-
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
 }
